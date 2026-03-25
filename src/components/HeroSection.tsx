@@ -72,7 +72,7 @@ function EmailForm({ buttonLabel, placeholder = "Enter your email", onSuccess }:
 
 export default function HeroSection() {
   const [waitlistSuccess, setWaitlistSuccess] = useState(false);
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const { ref, inView } = useInView({ threshold: 0.01 });
 
   return (
     <section
