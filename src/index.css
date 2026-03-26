@@ -9,7 +9,7 @@
 @layer base {
   :root {
     /* Core palette */
-    --background: 345 43% 12%;          /* #2C1018 deep wine */
+    --background: 25 47% 60%;            /* #C9956C golden */
     --foreground: 40 33% 93%;           /* #F5F0E8 soft cream */
 
     --card: 345 40% 15%;
