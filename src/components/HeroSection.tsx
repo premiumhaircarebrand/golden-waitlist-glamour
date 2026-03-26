@@ -51,21 +51,19 @@ function EmailForm({ buttonLabel, placeholder = "Enter your email", onSuccess }:
         placeholder="Your name"
         className="w-full bg-transparent border border-[hsl(var(--border))] px-5 py-3.5 text-sm font-body text-cream placeholder:text-[hsl(var(--typography-accent))] focus:outline-none focus:border-golden transition-colors duration-300"
       />
-      <div className="flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={placeholder}
-          className="flex-1 bg-transparent border border-[hsl(var(--border))] px-5 py-3.5 text-sm font-body text-cream placeholder:text-[hsl(var(--typography-accent))] focus:outline-none focus:border-golden transition-colors duration-300"
-        />
-        <button
-          type="submit"
-          className="bg-golden text-[hsl(var(--wine))] font-body font-medium text-xs tracking-luxury px-7 py-3.5 hover:bg-copper transition-colors duration-300 whitespace-nowrap"
-        >
-          {buttonLabel}
-        </button>
-      </div>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder={placeholder}
+        className="w-full bg-transparent border border-[hsl(var(--border))] px-5 py-3.5 text-sm font-body text-cream placeholder:text-[hsl(var(--typography-accent))] focus:outline-none focus:border-golden transition-colors duration-300"
+      />
+      <button
+        type="submit"
+        className="w-full bg-golden text-[hsl(var(--wine))] font-body font-medium text-xs tracking-luxury px-7 py-3.5 hover:bg-copper transition-colors duration-300 whitespace-nowrap"
+      >
+        {buttonLabel}
+      </button>
       {error && <p className="text-xs text-red-400 font-body">{error}</p>}
     </form>
   );
