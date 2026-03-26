@@ -109,7 +109,7 @@ export default function HeroSection() {
       {/* Nav */}
       <nav className="relative z-10 flex items-center justify-between px-8 md:px-16 pt-10">
         <div>
-          <span className="font-display text-cream text-xl tracking-editorial italic">
+          <span className="font-display text-xl tracking-editorial italic bg-golden text-wine px-3 py-1">
             Minnae Orvèe
           </span>
         </div>
