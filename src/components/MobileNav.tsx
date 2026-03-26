@@ -22,7 +22,8 @@ export default function MobileNav() {
       {/* Overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-50 bg-[hsl(var(--wine))/0.6] backdrop-blur-sm"
+          className="fixed inset-0 z-50 backdrop-blur-sm"
+          style={{ backgroundColor: "hsl(345 43% 12% / 0.6)" }}
           onClick={() => setOpen(false)}
         />
       )}
