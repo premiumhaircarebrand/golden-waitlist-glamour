@@ -14,41 +14,33 @@ function EmailForm({ buttonLabel, placeholder = "Enter your email", onSuccess }:
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!name.trim()) {
-    setError("Please enter your name.");
-    return;
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.trim())) {
-    setError("Please enter a valid email address.");
-    return;
-  }
-  setError("");
+    e.preventDefault();
+    if (!name.trim()) { setError("Please enter your name."); return; }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) { setError("Please enter a valid email address."); return; }
+    setError("");
+    setLoading(true);
 
-  try {
-    const res = await fetch("/.netlify/functions/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name.trim(), email: email.trim() }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.error || "Something went wrong. Please try again.");
-      return;
+    try {
+      const res = await fetch("/.netlify/functions/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.error || "Something went wrong. Please try again."); return; }
+      setSubmitted(true);
+      onSuccess();
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    setSubmitted(true);
-    onSuccess();
-  } catch {
-    setError("Network error. Please try again.");
-  }
-};
+  };
 
   if (submitted) {
     return (
@@ -78,9 +70,10 @@ function EmailForm({ buttonLabel, placeholder = "Enter your email", onSuccess }:
       />
       <button
         type="submit"
-        className="w-full bg-golden text-[hsl(var(--wine))] font-body font-medium text-xs tracking-luxury px-7 py-3.5 hover:bg-copper transition-colors duration-300 whitespace-nowrap"
+        disabled={loading}
+        className="w-full bg-golden text-[hsl(var(--wine))] font-body font-medium text-xs tracking-luxury px-7 py-3.5 hover:bg-copper transition-colors duration-300 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {buttonLabel}
+        {loading ? "Joining..." : buttonLabel}
       </button>
       {error && <p className="text-xs text-red-400 font-body">{error}</p>}
     </form>
