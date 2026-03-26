@@ -2,6 +2,7 @@ import { useState } from "react";
 import heroTexture from "@/assets/hero-texture.jpg";
 import productBottle from "@/assets/product-bottle.png";
 import { useInView } from "@/hooks/useInView";
+import MobileNav from "@/components/MobileNav";
 
 interface EmailFormProps {
   buttonLabel: string;
