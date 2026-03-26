@@ -16,21 +16,39 @@ function EmailForm({ buttonLabel, placeholder = "Enter your email", onSuccess }:
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim()) {
-      setError("Please enter your name.");
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!name.trim()) {
+    setError("Please enter your name.");
+    return;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email.trim())) {
+    setError("Please enter a valid email address.");
+    return;
+  }
+  setError("");
+
+  try {
+    const res = await fetch("/.netlify/functions/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.error || "Something went wrong. Please try again.");
       return;
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-    setError("");
+
     setSubmitted(true);
     onSuccess();
-  };
+  } catch {
+    setError("Network error. Please try again.");
+  }
+};
 
   if (submitted) {
     return (
