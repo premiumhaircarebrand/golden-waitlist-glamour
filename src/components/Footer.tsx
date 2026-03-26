@@ -6,9 +6,9 @@ export default function Footer() {
     >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand */}
-          <span className="font-display text-lg tracking-editorial italic bg-golden text-wine px-3 py-1">
-            Minnae Orvèe
-          </span>
+        <span className="font-display text-golden text-lg tracking-editorial italic">
+          Minnae Orvèe
+        </span>
 
         {/* Divider */}
         <div className="divider-golden flex-1 hidden md:block mx-12" />

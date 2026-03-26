@@ -109,7 +109,7 @@ export default function HeroSection() {
       {/* Nav */}
       <nav className="relative z-10 flex items-center justify-between px-8 md:px-16 pt-10">
         <div>
-          <span className="font-display text-xl tracking-editorial italic bg-golden text-wine px-3 py-1">
+          <span className="font-display text-cream text-xl tracking-editorial italic">
             Minnae Orvèe
           </span>
         </div>
@@ -196,12 +196,6 @@ export default function HeroSection() {
                 className="relative z-10 w-72 md:w-80 lg:w-96 object-cover shadow-card animate-float"
                 style={{ borderRadius: "0" }}
               />
-              {/* Brand label overlay on bottle */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-golden px-4 py-1.5 text-center">
-                <span className="font-display text-wine text-sm tracking-editorial italic whitespace-nowrap">
-                  Minnae Orvèe
-                </span>
-              </div>
             </div>
           </div>
         </div>
