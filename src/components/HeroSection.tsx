@@ -2,6 +2,7 @@ import { useState } from "react";
 import heroTexture from "@/assets/hero-texture.jpg";
 import productBottle from "@/assets/product-bottle.png";
 import { useInView } from "@/hooks/useInView";
+import MobileNav from "@/components/MobileNav";
 
 interface EmailFormProps {
   buttonLabel: string;
@@ -120,9 +121,10 @@ export default function HeroSection() {
           <span className="font-body text-xs tracking-luxury text-[hsl(var(--typography-accent))] uppercase hidden md:block">
             Story
           </span>
-          <button className="font-body text-xs tracking-luxury text-golden border border-golden px-5 py-2 hover:bg-golden hover:text-[hsl(var(--wine))] transition-colors duration-300 uppercase">
+          <button className="font-body text-xs tracking-luxury text-golden border border-golden px-5 py-2 hover:bg-golden hover:text-[hsl(var(--wine))] transition-colors duration-300 uppercase hidden md:block">
             Join Waitlist
           </button>
+          <MobileNav />
         </div>
       </nav>
 
