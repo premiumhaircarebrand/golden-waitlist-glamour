@@ -179,13 +179,30 @@ export default function HeroSection() {
             className={`flex justify-center items-center ${inView ? "animate-fade-in delay-400" : "opacity-0"}`}
           >
             <div className="relative">
-              {/* Glow behind image */}
+              {/* Outer ambient glow */}
               <div
                 className="absolute inset-0 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse at center, hsl(25 47% 60% / 0.20) 0%, transparent 70%)",
-                  transform: "scale(1.3)",
+                    "radial-gradient(ellipse at center, hsl(25 47% 60% / 0.25) 0%, hsl(25 47% 60% / 0.08) 50%, transparent 75%)",
+                  transform: "scale(1.6)",
+                }}
+              />
+              {/* Inner concentrated glow */}
+              <div
+                className="absolute inset-0 blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 60%, hsl(25 47% 65% / 0.30) 0%, transparent 55%)",
+                  transform: "scale(1.2)",
+                }}
+              />
+              {/* Bottom reflection */}
+              <div
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, hsl(25 47% 60% / 0.22) 0%, transparent 80%)",
                 }}
               />
               <img
