@@ -15,15 +15,21 @@ export default function Footer() {
 
         {/* Links */}
         <div className="flex items-center gap-8">
-          {["Privacy", "Terms", "Contact"].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="font-body text-xs tracking-luxury text-[hsl(var(--typography-accent))] hover:text-golden transition-colors duration-300 uppercase"
-            >
-              {link}
-            </a>
-          ))}
+          {[
+  { label: "Privacy", href: "https://www.iubenda.com/privacy-policy/87676883" },
+  { label: "Terms", href: "#" },
+  { label: "Contact", href: "#" },
+].map(({ label, href }) => (
+  
+    key={label}
+    href={href}
+    target={href.startsWith("http") ? "_blank" : undefined}
+    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+    className="font-body text-xs tracking-luxury text-[hsl(var(--typography-accent))] hover:text-golden transition-colors duration-300 uppercase"
+  >
+    {label}
+  </a>
+))}
         </div>
       </div>
 
