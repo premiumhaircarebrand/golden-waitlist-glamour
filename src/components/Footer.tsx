@@ -11,13 +11,10 @@ export default function Footer() {
       style={{ backgroundColor: "hsl(345 43% 8%)" }}
     >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Brand */}
         <span className="font-display text-golden text-lg tracking-editorial italic">
           Minnae Orvèe
         </span>
-        {/* Divider */}
         <div className="divider-golden flex-1 hidden md:block mx-12" />
-        {/* Links */}
         <div className="flex items-center gap-8">
           {links.map(({ label, href }) => (
             
