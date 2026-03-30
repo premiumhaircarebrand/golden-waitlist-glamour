@@ -16,7 +16,7 @@ export default function Footer() {
         </span>
         <div className="divider-golden flex-1 hidden md:block mx-12" />
         <div className="flex items-center gap-8">
-          {links.map(({ label, href }) => (
+          {links.map(({ label, href })) => (
             
               key={label}
               href={href}
